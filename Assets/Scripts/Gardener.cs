@@ -4,16 +4,27 @@ using UnityEngine;
 
 public class Gardener : NPCSet
 {
-    public GameObject gardener;
     Animator animator;
-    public SkinnedMeshRenderer smr;
+    public BoxCollider col;
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     public override void Detect()
     {
-        base.Detect();
     }
     public override void DoWork()
     {
         base.DoWork();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Goose"))
+        {
+            Debug.Log("»§");
+        }
     }
 }
