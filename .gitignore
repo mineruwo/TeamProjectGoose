@@ -12,18 +12,14 @@
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
-!/[Aa]ssets/Shader/.asset
-!/[Aa]ssets/Shader/.asset.meta
+!/[Aa]ssets/Shader/*.asset
+!/[Aa]ssets/Shader/*.asset.meta
 
-!/[Aa]ssets/Mesh/.asset
-!/[Aa]ssets/Mesh/.asset.meta
+!/[Aa]ssets/PrefabInstance/*.asset
+!/[Aa]ssets/PrefabInstance/*.asset.meta
 
-!/[Aa]ssets/PrefabInstance/.asset
-!/[Aa]ssets/PrefabInstance/.asset.meta
-
-!/[Aa]ssets/Material/.asset
-!/[Aa]ssets/Material/.asset.meta
-
+!/[Aa]ssets/Material/*.asset
+!/[Aa]ssets/Material/*.asset.meta
 
 # Uncomment this line if you wish to ignore the asset store tools plugin
 # /[Aa]ssets/AssetStoreTools*
@@ -71,3 +67,6 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+*.mat
+*.meta
+*.asset
