@@ -4,14 +4,6 @@ using UnityEngine;
 
 public class Gardener : NPCSet
 {
-    Animator animator;
-    public BoxCollider col;
-
-    private void Start()
-    {
-        animator = GetComponent<Animator>();
-    }
-
     public override void Detect()
     {
     }
@@ -25,6 +17,14 @@ public class Gardener : NPCSet
         if(other.CompareTag("Goose"))
         {
             Debug.Log("»§");
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Goose"))
+        {
+            Debug.Log("µµ³ª¾²");
         }
     }
 }
