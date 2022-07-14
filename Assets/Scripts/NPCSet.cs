@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class NPCSet : MonoBehaviour 
 {
-
     public virtual void DoWork()
     {
     }
     public virtual void Detect()
+    {
+    }
+    public virtual void Undetect()
     {
     }
 
