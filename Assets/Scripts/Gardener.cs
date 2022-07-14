@@ -1,19 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Animations.Rigging;
 
+public enum GardenerPos
+{
+    vase1,
+    vase2,
+    watering,
+    wateringCan,
+    shovel,
+    spadework,
+}
 
 public class Gardener : NPCSet
 {
     private RigBuilder rigBuilder;
-    public GameObject rig;
+    
+    private NavMeshAgent agent;
+    public GameObject[] vasePositions;
 
     private void Start()
     {
         rigBuilder = GetComponent<RigBuilder>();
-        rigBuilder.layers[0].active = false;
+
+        agent = GetComponent<NavMeshAgent>();
+        vasePositions = new GameObject[vasePositions.Length];
     }
+    private void Update()
+    {
+        agent.SetDestination(vasePositions[0].transform.position);
+    }
+
     public override void Detect()
     {
         rigBuilder.layers[0].active = true;
