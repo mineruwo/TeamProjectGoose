@@ -4,40 +4,117 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-   private Rigidbody rb;
-    private Camera cam;
+    private Transform camTr;
+    private Rigidbody rb;
+    private Animator animator;
+    
+    private bool isSneck;
+    private bool isRun = false;
+    private bool isWing = false;
 
-    private void Awake()
+    private float wing = 0f;
+    private float sneak = 0f;
+    private float run = 0f;
+    public float curspeed = 2;
+    public float maxSpeed = 10;
+
+
+    private Vector3 dir;
+    private bool input = false;
+    private Quaternion targetRot;
+    void Start()
     {
+        camTr = Camera.main.transform;
         rb = GetComponent<Rigidbody>();
-        cam = Camera.main;
+        animator = GetComponent<Animator>();
     }
 
-    private void Update()
+    void Update()
     {
-        Vector3 heading = Vector3.zero;
-        heading.z = Mathf.Abs(cam.transform.forward.z);
-        heading.y = 0;
-        heading.Normalize();
-        //test code
-        if (Input.GetKey(KeyCode.W))
-        {
-            //  rb.velocity = cam.transform.forward.normalized ;
-            rb.velocity = heading;
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            rb.velocity = cam.transform.right.normalized * -1f;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            rb.velocity = heading * -1f;
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            rb.velocity = cam.transform.right.normalized;
-        }
-        Debug.Log(rb.velocity);
+        Move();
+        InputSet();
 
+        sneak = Mathf.Lerp(sneak, isSneck ? 1f : 0f, Time.deltaTime * 10f);
+        animator.SetFloat("Sneak", sneak);
+
+        wing = Mathf.Lerp(wing, isWing ? 1f : 0f, Time.deltaTime * 10f);
+        animator.SetFloat("Wing", wing);
+
+        run = Mathf.Lerp(run, isRun ? 1f : 0f, Time.deltaTime * 10f);
+        animator.SetFloat("Run", run);
+        
+    }
+
+    private void FixedUpdate()
+    {
+        if (input)
+        {
+            rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
+            rb.AddForce(dir * curspeed);
+        }
+        else
+        {
+            rb.velocity = Vector3.Lerp(rb.velocity, Vector3.zero, Time.deltaTime * 10f);
+        }
+
+    }
+
+    public void Move()
+    {
+        var v = Input.GetAxisRaw("Vertical");
+        var h = Input.GetAxisRaw("Horizontal");
+
+        input = v != 0f || h != 0f;
+
+        var viewPos1 = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 10));
+        var viewPos2 = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 1f, 10));
+        var viewPosR = Camera.main.ViewportToWorldPoint(new Vector3(1f, 0.5f, 10));
+
+        var wDir = viewPos2 - viewPos1;
+        wDir.y = 0;
+        wDir.Normalize();
+
+        var rDir = viewPosR - viewPos1;
+        rDir.y = 0;
+        rDir.Normalize();
+
+        dir = v * wDir + h * rDir;
+        dir.Normalize();
+
+        if (rb.velocity.magnitude > 0.1f)
+        {
+            targetRot = Quaternion.LookRotation(rb.velocity);
+        }
+
+        if (input)
+        {
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRot, Time.deltaTime * 5f);
+        }
+        animator.SetFloat("Velocity", rb.velocity.magnitude * 4f );
+    }
+
+
+
+    public void InputSet()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            isSneck = !isSneck;
+        }
+
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            isWing = !isWing;
+        }
+
+        if(Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            isRun = !isRun;
+        }
+    }
+
+    public void AniParameters()
+    {
+        
     }
 }
