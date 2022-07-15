@@ -4,35 +4,29 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Animations.Rigging;
 
-public enum GardenerPos
+public class Gardener : NPCState
 {
-    vase1,
-    vase2,
-    watering,
-    wateringCan,
-    shovel,
-    spadework,
-}
+    public Animator animator;
 
-public class Gardener : NPCSet
-{
     private RigBuilder rigBuilder;
-    
     private NavMeshAgent agent;
-    public GameObject[] vasePositions;
+
+    public List<NPCState> states;
+    public NPCState initState;
+    public NPCState currState;
+
+    private States state;
 
     private void Start()
     {
         rigBuilder = GetComponent<RigBuilder>();
-
         agent = GetComponent<NavMeshAgent>();
-        vasePositions = new GameObject[vasePositions.Length];
     }
     private void Update()
     {
-        agent.SetDestination(vasePositions[0].transform.position);
+        //agent.SetDestination(destinations);]
+        Move();
     }
-
     public override void Detect()
     {
         rigBuilder.layers[0].active = true;
@@ -44,6 +38,26 @@ public class Gardener : NPCSet
     public override void DoWork()
     {
         base.DoWork();
+        
+    }
+
+    public override void Idle()
+    {
+        base.Idle();
+        animator.SetFloat("RemainingDistance", 0f);
+    }
+    public override void Move()
+    {
+        animator.SetFloat("LocalVelocityZ", 0.5f);
+        animator.SetFloat("RemainingDistance", 1f);
+    }
+
+    public override void Chase()
+    {
+        //item에다가 nav mesh 달아놓은 다음에 쫓아가게....
+        //범위는 얼마 정도?
+        animator.SetFloat("LocalVelocityZ", 1f);
+        animator.SetFloat("RemainingDistance", 1f);
     }
     private void OnTriggerStay(Collider other)
     {
