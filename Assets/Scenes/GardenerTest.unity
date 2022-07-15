@@ -366,11 +366,6 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 1.3, y: 0, z: 0}
   m_TimeToStationary: 0.5
---- !u!95 &1463229720 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 294127236928960766, guid: 64e2dcf42bc6799499c22ec7fb0d0298, type: 3}
-  m_PrefabInstance: {fileID: 2025917195}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1692485080
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -673,61 +668,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 685305962, guid: 64e2dcf42bc6799499c22ec7fb0d0298, type: 3}
-      propertyPath: m_Data.m_SourceObjects.m_Length
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 685305962, guid: 64e2dcf42bc6799499c22ec7fb0d0298, type: 3}
-      propertyPath: m_Data.m_SourceObjects.m_Item0.weight
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 685305962, guid: 64e2dcf42bc6799499c22ec7fb0d0298, type: 3}
       propertyPath: m_Data.m_SourceObjects.m_Item0.transform
       value: 
       objectReference: {fileID: 207534411}
-    - target: {fileID: 2025917199, guid: 64e2dcf42bc6799499c22ec7fb0d0298, type: 3}
-      propertyPath: animator
-      value: 
-      objectReference: {fileID: 1463229720}
-    - target: {fileID: 2025917199, guid: 64e2dcf42bc6799499c22ec7fb0d0298, type: 3}
-      propertyPath: aiPositions.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2025917199, guid: 64e2dcf42bc6799499c22ec7fb0d0298, type: 3}
-      propertyPath: vasePositions.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2025917199, guid: 64e2dcf42bc6799499c22ec7fb0d0298, type: 3}
-      propertyPath: aiPositions.Array.data[0]
-      value: 
-      objectReference: {fileID: 420230006}
-    - target: {fileID: 2025917199, guid: 64e2dcf42bc6799499c22ec7fb0d0298, type: 3}
-      propertyPath: aiPositions.Array.data[1]
-      value: 
-      objectReference: {fileID: 251875729}
-    - target: {fileID: 2025917199, guid: 64e2dcf42bc6799499c22ec7fb0d0298, type: 3}
-      propertyPath: vasePositions.Array.data[0]
-      value: 
-      objectReference: {fileID: 420230006}
-    - target: {fileID: 2025917199, guid: 64e2dcf42bc6799499c22ec7fb0d0298, type: 3}
-      propertyPath: vasePositions.Array.data[1]
-      value: 
-      objectReference: {fileID: 251875729}
-    - target: {fileID: 2025917202, guid: 64e2dcf42bc6799499c22ec7fb0d0298, type: 3}
-      propertyPath: m_Size.x
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2025917202, guid: 64e2dcf42bc6799499c22ec7fb0d0298, type: 3}
-      propertyPath: m_Size.y
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 2025917202, guid: 64e2dcf42bc6799499c22ec7fb0d0298, type: 3}
-      propertyPath: m_Size.z
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 2025917202, guid: 64e2dcf42bc6799499c22ec7fb0d0298, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 294127236928905632, guid: 64e2dcf42bc6799499c22ec7fb0d0298, type: 3}
       propertyPath: m_Name
       value: gardener
@@ -778,40 +721,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64e2dcf42bc6799499c22ec7fb0d0298, type: 3}
---- !u!1 &2025917196 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 294127236928905632, guid: 64e2dcf42bc6799499c22ec7fb0d0298, type: 3}
-  m_PrefabInstance: {fileID: 2025917195}
-  m_PrefabAsset: {fileID: 0}
---- !u!54 &2025917203
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2025917196}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &2025917205
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2025917196}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f91b385bccc2f0d44a0e7f423c6c2c9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destinations: []
 --- !u!1 &2036740955 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5702511770047192105, guid: edfcaed245980ce4e984f9bbba84d848, type: 3}
