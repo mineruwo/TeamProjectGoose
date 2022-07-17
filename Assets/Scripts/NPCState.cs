@@ -11,17 +11,10 @@ public enum States
 }
 public class AiCondition
 {
-    public virtual bool detectGoosehasItem()
-    {
-        return false;
-    }
-
-    public virtual bool detectObjectOn()
-    {
-        return false;
-    }
-
-    public virtual bool outOfSight()
+    //goose가 아이템을 물었을때
+    //goose가 범위안에 들어왔을 때
+    //goose가 뺏었을 때 <얘들은 조건이다
+    public virtual bool Test()
     {
         return false;
     }
@@ -65,6 +58,12 @@ public class NPCState : MonoBehaviour
     {
     }
     public virtual void Move()
+    {
+    }
+    public virtual void PickUp()
+    {
+    }
+    public virtual void DropDown()
     {
     }
 }

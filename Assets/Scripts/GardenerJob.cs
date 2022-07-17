@@ -3,17 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class GardenerJob : MonoBehaviour
+public class GardenerJob
 {
     public Job gardenerToDo;
 
+    public bool isFinished = false;
+
+    public Transform objectsPos;
 
     public List<GameObject> destinations = new List<GameObject>();
 
-    private void Start()
-    {
-
-    }
     //공통적으로 들어가야 할 것 -> if 거위가 item 뺏어갔을 시 chase
     public void DoNothing()
     {
@@ -22,6 +21,7 @@ public class GardenerJob : MonoBehaviour
 
     public void Watering()
     {
+        Vector3 wateringCanPos = objectsPos.position;
         //얘를 어떻게 들고오지
 
         //물뿌리개 있는 장소로 감
@@ -34,6 +34,7 @@ public class GardenerJob : MonoBehaviour
 
     public void CaringPlants()
     {
+        Vector3 shovelPos = objectsPos.position;
         //의자 위에 있는 삽 가지러 감
         //if 그자리에 없으면 ?? 애니메이션
         //다른 작업
@@ -46,6 +47,7 @@ public class GardenerJob : MonoBehaviour
 
     public void CarryingVase()
     {
-
+        Vector3 vasePos = objectsPos.position;
+        //근데 얘는 한번 옮기고 그자리를 곶어해줘야하니까 . . .. 업데이트에서...??
     }
 }
