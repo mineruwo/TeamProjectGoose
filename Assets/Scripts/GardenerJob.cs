@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class GardenerJob
+public class GardenerJob : MonoBehaviour
 {
     public Job gardenerToDo;
 

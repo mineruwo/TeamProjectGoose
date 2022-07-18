@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface Job
 {
-    public void GooseGetItems();
+    public IEnumerator GooseGetItems();
     public void GooseInCollider();
     public void ObjectsOn();
 }

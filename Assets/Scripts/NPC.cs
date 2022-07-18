@@ -2,13 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum States
-{
-    idle,
-    move,
-    work,
-    chase,
-}
 public class AiCondition
 {
     //goose가 아이템을 물었을때
@@ -25,7 +18,7 @@ public class Transition
     public AiCondition condition;
     public NPCState target;
 }
-public class NPCState : MonoBehaviour 
+public class NPC : MonoBehaviour 
 {
     List<Transition> transitions = new List<Transition>();
     private void Awake()
@@ -42,9 +35,6 @@ public class NPCState : MonoBehaviour
         
     }
 
-    public virtual void DoWork()
-    {
-    }
     public virtual void Detect()
     {
     }
@@ -65,5 +55,12 @@ public class NPCState : MonoBehaviour
     }
     public virtual void DropDown()
     {
+    }
+    public virtual void TouchGoose()
+    {
+    }
+    public virtual IEnumerator DoWork()
+    {
+        yield return null;
     }
 }
