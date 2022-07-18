@@ -4,13 +4,26 @@ using UnityEngine;
 
 public class InterectionObject : PhysicObject
 {
-    public override bool OnGrab()
+    public void Awake()
     {
-        throw new System.NotImplementedException();
+ 
+
+        isActive = false;
+        isHeavy = false;
+        isSound = false;
+        isGrab = true;
+    }
+
+    public override bool OnGrab(bool isgrab)
+    {
+        isActive = true;
+
+        return true;
     }
 
     public override bool OnTrigger()
     {
-        throw new System.NotImplementedException();
+
+        return true;
     }
 }

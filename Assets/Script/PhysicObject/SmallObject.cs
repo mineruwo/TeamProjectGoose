@@ -4,21 +4,55 @@ using UnityEngine;
 
 public class SmallObject : PhysicObject
 {
-
     public Vector3 setPos;
+    private Rigidbody Rigidbody;
+    private List<Collider> colliders;
 
-    public void Start()
+    public void Awake()
     {
         setPos = transform.position;
+        Rigidbody = GetComponent<Rigidbody>();
+        var cols = GetComponents<Collider>();
+        foreach (var col in cols)
+        {
+            col.enabled = false;
+            colliders.Add(col);
+        }
+
+        isActive = false;
+        isHeavy = false;
+        isSound = false;
+        isGrab = true;
     }
 
-    public override bool OnGrab()
+    public override bool OnGrab(bool isgrab)
     {
-        throw new System.NotImplementedException();
+        switch (isgrab)
+        {
+            case true:
+                foreach (var col in colliders)
+                {
+                    col.enabled = true;
+                }
+                isActive = true;
+
+                return true;
+
+            case false:
+
+                foreach (var col in colliders)
+                {
+                    col.enabled = false;
+                }
+
+                return false;
+        }
+
     }
 
     public override bool OnTrigger()
     {
-        throw new System.NotImplementedException();
+
+        return true;
     }
 }
