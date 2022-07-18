@@ -4,15 +4,44 @@ using UnityEngine;
 
 public class AudioMgr : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Dictionary<string,AudioClip> audioClips;
+    public AudioSource BGM;
+    public string filePath = "Assets/Resources/Audio/SFX/";
+    [System.Obsolete]
+    WWW www;
+
+
+    public void BGMPlay()
     {
-        
+        BGM.Play();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void BGMStop()
     {
-        
+        BGM.Stop();
     }
+
+    [System.Obsolete]
+    public AudioClip SFXPlay(string key)
+    {
+        if (!audioClips.ContainsKey(key))
+        {
+            www = new(Application.persistentDataPath + "Assets/Resources/Audio/SFX/"
+                + key + ".wav");
+
+            var audio = www.GetAudioClip();
+
+            audioClips.Add(key, audio);
+
+        }
+
+        var clip = audioClips.GetValueOrDefault(key);
+
+        return clip;
+    }
+
+
+
+
+
 }
