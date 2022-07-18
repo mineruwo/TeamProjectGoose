@@ -3,7 +3,30 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - NavMeshHelper
+  - Water
+  - Dirt
+  - FootstepGrass
+  - Concrete
+  - Wood
+  - ConcreteHighPriority
+  - Gravel
+  - Beakable
+  - Bush
+  - Squelch
+  - Cardboard
+  - Mud
+  - NoFootstep
+  - DeepWater
+  - NoThrowSpoil
+  - NoGlassBreak
+  - Gate
+  - Human
+  - Table
+  - Dumpster
+  - Blanket
+  - Fence
   layers:
   - Default
   - TransparentFX
@@ -30,7 +53,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - PostProcess
   - 
   - 
   - 
