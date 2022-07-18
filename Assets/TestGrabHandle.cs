@@ -6,7 +6,7 @@ public class TestGrabHandle : MonoBehaviour
 {
     public GameObject grabHandle;
     private Vector3 distance;
-    private FixedJoint joint;
+  
     public Rigidbody gooseRb;
     public Rigidbody rigidBody;
     
@@ -25,8 +25,7 @@ public class TestGrabHandle : MonoBehaviour
 
     public void GrabHandle()
     {
-        joint = new FixedJoint();
-        joint.connectedBody = rigidBody;
+        
     }
 
     

@@ -8,12 +8,13 @@ public class GooseGrab : MonoBehaviour
     public Transform gooseMouse;
     public GameObject grabObject;
     public Rigidbody rb;
-    private Animator animator;
+    private Collider collider;
  
+    private bool isDrag = false;
     // Start is called before the first frame update
     void Start()
     {
-        animator = GetComponent<Animator>();
+        collider = GetComponent<Collider>();
         rb = GetComponent<Rigidbody>();
     }
 
@@ -22,20 +23,29 @@ public class GooseGrab : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Z))
         {
-            RaycastHit hit;
-            if(Physics.Raycast(transform.position, transform.forward, out hit, grabRange))
+            //RaycastHit hit;
+            //if(Physics.Raycast(transform.position, transform.forward, out hit, grabRange))
+            //{
+            //    GrabObject(hit.transform.gameObject);
+            //}
+            if(grabObject != null)
             {
-                GrabObject(hit.transform.gameObject);
+                isDrag = true;
+                Rigidbody grabObjRb = grabObject.GetComponent<Rigidbody>();
+                grabObjRb.isKinematic = true;
+                grabObjRb.useGravity = false;
+
+                gooseMouse.transform.position = grabObject.GetComponent<TestGrabHandle>().grabHandle.transform.localPosition;
+
+                grabObject.transform.SetParent(gooseMouse);
             }
         }
 
-        if(grabObject != null)
-        {
-            grabObject.transform.position = gooseMouse.position;
-        }
+        //if(grabObject != null)
+        //{
+        //    grabObject.transform.position = gooseMouse.position;
+        //}
     }
-
-    
 
 
     void GrabObject(GameObject grabObj)
@@ -44,13 +54,22 @@ public class GooseGrab : MonoBehaviour
         {
             Rigidbody grabObjRb = grabObj.GetComponent<Rigidbody>();
             grabObjRb.isKinematic = true;
+            grabObjRb.useGravity = false;
 
-            gooseMouse.transform.position = grabObj.GetComponent<TestGrabHandle>().transform.position;
+            gooseMouse.transform.position = grabObj.GetComponent<TestGrabHandle>().transform.localPosition;
             
-            grabObj.GetComponent<TestGrabHandle>().GrabHandle();
-
+            grabObj.GetComponent<TestGrabHandle>().transform.SetParent(gooseMouse);
 
 
         }
     }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if(other.GetComponent<TestGrabHandle>())
+        {
+            grabObject = other.gameObject;
+        }
+    }
+
 }
