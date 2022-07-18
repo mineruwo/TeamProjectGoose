@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44444257, g: 0.49391973, b: 0.5732388, a: 1}
+  m_IndirectSpecularColor: {r: 0.4444425, g: 0.4939193, b: 0.57323825, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -18988,7 +18988,7 @@ Animator:
   m_GameObject: {fileID: 1935740604}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 63b569ca4d7b7ed49aa895a5e6c76d45, type: 2}
-  m_Controller: {fileID: 9100000, guid: a5cf7ce8b7230254da1e5cd071857195, type: 2}
+  m_Controller: {fileID: 9100000, guid: 1a86910df643ba64e8dfecca65bd3539, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -19027,11 +19027,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1935740604}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2bdf0411f7f4b4489e0d530f8cf6757, type: 3}
+  m_Script: {fileID: 11500000, guid: ddb49071239e7ed45af233026117dca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  curspeed: 8
-  maxSpeed: 3
+  curspeed: 5
+  maxSpeed: 1
 --- !u!114 &1935740611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19041,7 +19041,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1935740604}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee7673523895474428b55fdec8b841c4, type: 3}
+  m_Script: {fileID: 11500000, guid: 995c6ed995053fd469dd9309658578c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   grabRange: 3

@@ -117,4 +117,9 @@ public class PlayerController : MonoBehaviour
     {
         
     }
+
+    public void Shoo(Vector3 forward)
+    {
+        
+    }
 }
