@@ -11,7 +11,7 @@ AnimatorController:
   m_AnimatorParameters:
   - m_Name: CurrentSpeed
     m_Type: 1
-    m_DefaultFloat: 0
+    m_DefaultFloat: 1
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
@@ -2089,9 +2089,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 1.4100449
   m_TransitionOffset: 0
-  m_ExitTime: 0.75
+  m_ExitTime: 0.66350585
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -2462,7 +2462,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Reaction 0
+  m_Name: Reaction Found Goose
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -2475,7 +2475,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: d273b6dcd3397d741b81c02b994599bc, type: 2}
+  m_Motion: {fileID: 7400000, guid: 7c76465d2f4bfbc479e01dbd68c9690e, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -3610,16 +3610,16 @@ AnimatorStateMachine:
     m_Position: {x: 0, y: 0, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102545405426919204}
-    m_Position: {x: 250, y: 0, z: 0}
+    m_Position: {x: 290, y: -190, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102022437254411151}
-    m_Position: {x: 500, y: 0, z: 0}
+    m_Position: {x: 530, y: -120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102778394977674082}
     m_Position: {x: 0, y: 250, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102734901262290428}
-    m_Position: {x: 250, y: 250, z: 0}
+    m_Position: {x: 240, y: 340, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102366819016641767}
     m_Position: {x: 500, y: 250, z: 0}
@@ -3644,10 +3644,10 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 1102982771632560596}
-    m_Position: {x: 0, y: 0, z: 0}
+    m_Position: {x: -180, y: -10, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102152310245014547}
-    m_Position: {x: 250, y: 0, z: 0}
+    m_Position: {x: 430, y: -150, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102157136530165985}
     m_Position: {x: 500, y: 0, z: 0}
