@@ -31,8 +31,6 @@ public class GlobalGameMgr : MonoBehaviour
 
     public DataMgr dataMgr;
 
-    public ObjectMgr objectMgr;
-
     public CameraSystem cameraSystem;
 
     public SceneMgr sceneMgr;

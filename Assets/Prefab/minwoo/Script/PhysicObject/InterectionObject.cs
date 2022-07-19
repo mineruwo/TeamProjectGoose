@@ -6,8 +6,6 @@ public class InterectionObject : PhysicObject
 {
     public void Awake()
     {
- 
-
         isActive = false;
         isHeavy = false;
         isSound = false;

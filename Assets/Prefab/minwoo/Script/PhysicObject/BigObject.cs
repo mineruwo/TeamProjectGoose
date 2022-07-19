@@ -12,11 +12,18 @@ public class BigObject : PhysicObject
     public void Awake()
     {
         setPos = transform.position;
-        Rigidbody = GetComponent<Rigidbody>();
-        var cols = GetComponents<Collider>();
-        foreach (var col in cols)
+        Rigidbody = GetComponentInChildren<Rigidbody>();
+
+        if (Rigidbody == null)
         {
-            colliders.Add(col);
+            Rigidbody = GetComponent<Rigidbody>();
+        }
+
+        Rigidbody.isKinematic = true;
+        colliders = new List<Collider>(GetComponentsInChildren<Collider>());
+
+        foreach (var col in colliders)
+        {
             col.enabled = false;
         }
 
@@ -28,6 +35,8 @@ public class BigObject : PhysicObject
 
     public override bool OnGrab(bool isgrab)
     {
+        Rigidbody.isKinematic = false;
+
         switch (isgrab)
         {
             case true:
