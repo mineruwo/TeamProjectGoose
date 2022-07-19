@@ -19,35 +19,58 @@ public class Gardener : NPC
     public Transform key;
     public Transform gardnerTwoHands;
     public Transform gardnerOneHand;
-    public float pickUpRange;
+    public float pickUpRange = 3f;
 
     public Transform[] workPos;
     public GameObject goose;
+    public GameObject[] items;
 
     public bool equipped;
     public bool isArrived;
     public bool isTakenByGoose;
 
-    private States state;
+    private NPCState state;
+    private int index;
+
+    private float timer;
 
     private void Start()
     {
         rigBuilder = GetComponent<RigBuilder>();
         agent = GetComponent<NavMeshAgent>();
-
-        //workPos = gameObject.transform.position;
+        index = 0; 
+        Idle();
+        Undetect();
     }
     private void Update()
     {
-        StartCoroutine(DoWork());
-        //열쇠 떨어뜨렸을 때 체크
-        //Vector3 distanceToNPC = transform.position;
-        //if(!equipped && distanceToNPC.magnitude <= pickUpRange)
-        //{
-        //    PickUp();
-        //}
+        if (state == NPCState.idle)
+        {
+            timer += Time.deltaTime;
+            if (timer > 8f)
+            {
+                Move();
+                timer = 0f;
+            }
+        }
+
+        if (state == NPCState.move)
+        {
+            var distance = Vector3.Distance(transform.position, workPos[index].position);
+            if (agent.stoppingDistance > distance + 0.1f)
+            {
+                isArrived = true;
+                Idle();
+                index += 1;
+            }
+        }
 
         TouchGoose();
+
+        if(index>workPos.Length-1)
+        {
+            index = 0;
+        }
     }
     public override void Detect()
     {
@@ -57,47 +80,40 @@ public class Gardener : NPC
     {
         rigBuilder.layers[0].active = false;
     }
-    public override IEnumerator DoWork()
-    {
-        yield return new WaitForSeconds(5f);
-        Move();
-        agent.SetDestination(workPos[0].position);
-
-        //pathStatus랑 같을 때 검사 pathComplete
-        if(agent.pathStatus == NavMeshPathStatus.PathComplete)
-        {
-            isArrived = true;
-            Idle();
-            Debug.Log("걷고있나요?");
-        }
-
-        yield break;
-    }
-
     public override void Idle()
     {
+        state = NPCState.idle;
         animator.SetFloat("RemainingDistance", 0f);
     }
     public override void Move()
     {
+        state = NPCState.move;
         animator.SetFloat("LocalVelocityZ", 0.5f);
         animator.SetFloat("RemainingDistance", 1f);
+
+        agent.SetDestination(workPos[index].position);
     }
 
     public override void Chase()
     {
+        state = NPCState.chase;
         isTakenByGoose = true;
 
-
-        //item에다가 nav mesh 달아놓은 다음에 쫓아가게....
-        //범위는 얼마 정도?
         animator.SetFloat("LocalVelocityZ", 1f);
         animator.SetFloat("RemainingDistance", 1f);
+    }
+
+    public override void DoWork()
+    {
+        state = NPCState.work;
+
     }
 
     public override void PickUp()
     {
         base.PickUp();
+        items[index].transform.SetParent(gardnerOneHand.transform);
+        gardnerOneHand.localEulerAngles = Vector3.zero;
         equipped = true;
     }
 
@@ -114,7 +130,7 @@ public class Gardener : NPC
         var backward = transform.forward * -1f;
         var offset = backward - gooseVec;
 
-        float deg = Mathf.Atan2(offset.y, offset.x)*Mathf.Rad2Deg;
+        float deg = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;
 
         if(deg>45 && gooseVec.y < 1f)
         {
@@ -133,12 +149,30 @@ public class Gardener : NPC
 
     }
 
+    private void Waterring()
+    {
+
+    }
+
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Goose"))
         {
             Detect();
         }
+        if(other.CompareTag("Item"))
+        {
+            foreach(var item in items)
+            {
+                var distance = Vector3.Distance(transform.position, item.transform.position);
+                if (distance < 1f)
+                {
+                    PickUp();
+                }
+
+            }
+        }
+
     }
 
     private void OnTriggerExit(Collider other)

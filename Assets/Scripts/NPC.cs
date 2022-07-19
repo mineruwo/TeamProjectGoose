@@ -59,8 +59,7 @@ public class NPC : MonoBehaviour
     public virtual void TouchGoose()
     {
     }
-    public virtual IEnumerator DoWork()
+    public virtual void DoWork()
     {
-        yield return null;
     }
 }

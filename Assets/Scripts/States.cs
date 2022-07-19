@@ -8,6 +8,7 @@ public enum NPCState
     work,
     chase,
 }
+
 public interface States
 {
     // Start is called before the first frame update

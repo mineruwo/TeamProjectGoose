@@ -24,6 +24,7 @@ TagManager:
   - ConcreteHighPriority
   - Human
   - Goose
+  - Item
   layers:
   - Default
   - TransparentFX
