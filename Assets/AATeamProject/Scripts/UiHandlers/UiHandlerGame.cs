@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class UiHandlerGame : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject questMenuUp;
+    public GameObject questMenuDown;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public GameObject[] questNoteLists;
+
+    private int currentCursor = 1;
+    public GameObject[] cursors;
+    private Vector2 sizeUp = new Vector2(1.3f, 1.3f);
+    private Vector2 sizeDown = new Vector2(1f, 1f);
+
+    public GameObject questNoteScrap;
+
+
+
 }

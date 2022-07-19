@@ -515,7 +515,7 @@ GameObject:
   - component: {fileID: 426200668}
   - component: {fileID: 426200669}
   m_Layer: 0
-  m_Name: TTTTTTTTTT
+  m_Name: UiHandler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
