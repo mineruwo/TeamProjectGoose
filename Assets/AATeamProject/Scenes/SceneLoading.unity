@@ -232,9 +232,6 @@ MonoBehaviour:
   - prefab: {fileID: 2770549945639815564, guid: 2f985f20ff955834599777c58d0938de, type: 3}
     count: 50
     list: []
-  - prefab: {fileID: 2770549945639815564, guid: 3e14a250cba37ea49a1a356b55b83a0a, type: 3}
-    count: 10
-    list: []
 --- !u!4 &511732495
 Transform:
   m_ObjectHideFlags: 0
@@ -975,7 +972,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b3663a44bc9b154fbb6284a2ab74454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deList: []
 --- !u!4 &7949625413940189208
 Transform:
   m_ObjectHideFlags: 0

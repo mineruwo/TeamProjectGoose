@@ -25,8 +25,6 @@ TagManager:
   - Human
   - Goose
   - Item
-  - Blanket
-  - NoteScrap
   layers:
   - Default
   - TransparentFX

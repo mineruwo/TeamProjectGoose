@@ -11,9 +11,9 @@ public class UiHandlerTitle : MonoBehaviour
         GameManager.instance.uiMgr.OnClickGameSlot(slotNum);
     }
 
-    public void OnClickDeleteButton(int slotNum)
+    public void OnClickDelete(int slotNum)
     {
         Debug.Log($"[UiManager] {slotNum} Áö¿ì±â");
-        GameManager.instance.uiMgr.OnClickDeleteButton(slotNum);
     }
+
 }

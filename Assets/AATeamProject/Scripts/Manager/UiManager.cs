@@ -15,12 +15,6 @@ public class UiManager : MonoBehaviour
         GameManager.instance.sceneMgr.LoadGameScene();
     }
 
-    public void OnClickDeleteButton(int slotNum)
-    {
-        GameManager.instance.dataMgr.DeleteQuestData(slotNum);
-
-    }
-
     // 게임씬
 
     private int currentCursor = 1;
@@ -30,12 +24,6 @@ public class UiManager : MonoBehaviour
 
     private bool Stage1SubQuest = false;
     private bool Stage2SubQuest = false;
-
-
-    public void OnClickSaveButton()
-    {
-        GameManager.instance.dataMgr.SaveQuestData();
-    }
 
     public void OnClickQuestButton(GameObject upMenu, GameObject downMenu)
     {
@@ -51,9 +39,6 @@ public class UiManager : MonoBehaviour
             downMenu.SetActive(true);
         }
     }
-
-
-
 
     public void OnClickLeftArrow(GameObject[] cursors)
     {
@@ -95,108 +80,48 @@ public class UiManager : MonoBehaviour
 
     GameObject questTextObj;
     GameObject subQuestTextObj;
-
-    public void ClearNote(GameObject[] questNoteLists)
-    {
-        GameObject[] allChildren = questNoteLists[1].GetComponentsInChildren<GameObject>();
-        foreach (GameObject child in allChildren)
-        {
-            Debug.Log($"[UiManager] 삭제함");
-            if (child != questNoteLists[1])
-            {
-                child.SetActive(false);
-            }
-        }
-    }
-
-    private string text;
-    public void GetClearQuest(string text)
-    {
-        this.text = text;
-    }
-
-    GameObject scrapNote;
-    public void ShowNoteScrap(string name)
-    {
-        if (scrapNote == null)
-        {
-            scrapNote = GameObject.FindGameObjectWithTag("ScrapNote");
-        }
-        var text = scrapNote.transform.GetChild(0);
-        text.GetComponent<TextMeshProUGUI>().text = "<s>" + name + "</s>";
-        scrapNote.SetActive(true);
-        StartCoroutine(ScrapeDown());
-    }
-
-    public IEnumerator ScrapeDown()
-    {
-        yield return new WaitForSeconds(2.5f);
-        scrapNote.SetActive(false);
-    }
-
-    public void SetNoteScrap(GameObject note)
-    {
-        scrapNote = note;
-    }
-
-    public void NoteScrapeUp(GameObject NoteScrap)
-    {
-        var text = NoteScrap.transform.GetChild(0);
-        text.GetComponent<TextMeshProUGUI>().text = "<s>" + text + "</s>";
-        NoteScrap.SetActive(true);
-    }
-
-    public List<GameObject> deList;
-
     public void WriteQuestNote(GameObject[] questNoteLists)
     {
-        foreach (var del in deList)
-        {
-            var obj = del;
-            obj.SetActive(false);
-        }
-        deList.Clear();
+        //GameObject[] allChildren = questNoteLists[1].GetComponentsInChildren<GameObject>();
+        //foreach (GameObject child in allChildren)
+        //{
+        //    child.SetActive(false);
+        //}
 
         foreach (var quest in GameManager.instance.dataMgr.currentQuestDataList.FindAll(x => x.stage == 1))
         {
-            if (quest.id.ToString().Length != 4 && !quest.isMainQuest)
+            if(quest.id.ToString().Length != 4)
             {
                 questTextObj = GameManager.instance.objpoolMgr.GetObject("QuestText");
                 questTextObj.transform.parent = questNoteLists[1].transform;
                 questTextObj.GetComponent<TextMeshProUGUI>().text = quest.questName;
-                if (quest.isClear)
+                if(quest.isClear)
                 {
                     questTextObj.GetComponent<TextMeshProUGUI>().text = "<s>" + quest.questName + "</s>";
                 }
-                deList.Add(questTextObj);
             }
-            if(quest.id.ToString().Length == 4)
+            else
             {
-                if (!Stage1SubQuest)
-                {
-                    subQuestTextObj = GameManager.instance.objpoolMgr.GetObject("QuestCollectTextQ1");
-                    subQuestTextObj.transform.parent = questNoteLists[1].transform;
-                    subQuestTextObj.GetComponent<TextMeshProUGUI>().text = "(피크닉 담요에 가져올 물건 : ";
-                    subQuestTextObj.GetComponent<TextMeshProUGUI>().text += quest.questName;
-                    if (quest.isClear)
-                    {
-                        subQuestTextObj.GetComponent<TextMeshProUGUI>().text += "<s>" + quest.questName + "</s>";
-                    }
-                    Stage1SubQuest = true;
-                    deList.Add(subQuestTextObj);
-                }
-                else
-                {
-                    subQuestTextObj.GetComponent<TextMeshProUGUI>().text += (", " + quest.questName);
-                    if (quest.isClear)
-                    {
-                        subQuestTextObj.GetComponent<TextMeshProUGUI>().text += (", " +"<s>" + quest.questName + "</s>");
-                    }
-                }
+                //if (!Stage1SubQuest)
+                //{
+                //    subTextObj = Instantiate(questCollectTexts[0], questNoteLists[1].transform.GetChild(0));
+                //    subTextObj.GetComponent<TextMeshProUGUI>().text += DataManager.currentQuestDataList[i].questName;
+                //    if (DataManager.currentQuestDataList[i].isClear)
+                //    {
+                //        subTextObj.GetComponent<TextMeshProUGUI>().text += "<s>" + subTextObj.GetComponent<TextMeshProUGUI>().text + "</s>";
+                //    }
+                //    Stage1SubQuest = true;
+                //}
+                //else
+                //{
+                //    subTextObj.GetComponent<TextMeshProUGUI>().text += (", " + DataManager.currentQuestDataList[i].questName);
+                //    if (DataManager.currentQuestDataList[i].isClear)
+                //    {
+                //        subTextObj.GetComponent<TextMeshProUGUI>().text += (", " +"<s>" + subTextObj.GetComponent<TextMeshProUGUI>().text + "</s>");
+                //    }
+                //}
             }
         }
-        subQuestTextObj.GetComponent<TextMeshProUGUI>().text += ")";
-        Stage1SubQuest = false;
 
 
         //for (int i = 0; i < DataManager.currentQuestDataList.Count; i++)

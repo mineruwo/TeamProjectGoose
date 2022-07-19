@@ -26,8 +26,6 @@ public class QuestManager : MonoBehaviour
         {
             Debug.Log($"[QuestManage] 퀘스트 클리어 {GameManager.instance.dataMgr.currentQuestDataList[num].questName}");
             GameManager.instance.dataMgr.currentQuestDataList[num].isClear = true;
-            //GameManager.instance.uiMgr.ShowNoteScrap(GameManager.instance.dataMgr.currentQuestDataList[num].questName);
-            
         }
     }
 }

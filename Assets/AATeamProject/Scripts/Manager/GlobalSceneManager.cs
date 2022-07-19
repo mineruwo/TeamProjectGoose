@@ -29,7 +29,7 @@ public class GlobalSceneManager : MonoBehaviour
 
             time = + Time.time;
 
-            if (time > 2)
+            if (time > 3)
             {
                 operation.allowSceneActivation = true;
             }
