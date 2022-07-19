@@ -805,9 +805,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8777624912796d647a6c2b4b3e0b7fee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vcam1: {fileID: 0}
-  vcam2: {fileID: 0}
-  clearShot: {fileID: 0}
+  vcam1: {fileID: 2422149700568919261}
+  vcam2: {fileID: 2422149701090248066}
+  clearShot: {fileID: 2422149701143159826}
 --- !u!4 &2422149699498084072
 Transform:
   m_ObjectHideFlags: 0
@@ -1837,11 +1837,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sharedProfile: {fileID: 11400000, guid: 504d85ca652a51242a83a9d28268905c, type: 2}
-  isGlobal: 1
-  blendDistance: 0
-  weight: 0.882
-  priority: 0
 --- !u!65 &8749682732647911605
 BoxCollider:
   m_ObjectHideFlags: 0
