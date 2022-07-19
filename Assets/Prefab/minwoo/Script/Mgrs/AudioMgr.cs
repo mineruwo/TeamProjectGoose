@@ -5,20 +5,19 @@ using UnityEngine;
 public class AudioMgr : MonoBehaviour
 {
     public Dictionary<string,AudioClip> audioClips;
-    public AudioSource BGM;
+    public AudioSource soundSource;
     public string filePath = "Assets/Resources/Audio/SFX/";
     [System.Obsolete]
     WWW www;
 
-
     public void BGMPlay()
     {
-        BGM.Play();
+        soundSource.Play();
     }
 
     public void BGMStop()
     {
-        BGM.Stop();
+        soundSource.Stop();
     }
 
     [System.Obsolete]
@@ -39,9 +38,5 @@ public class AudioMgr : MonoBehaviour
 
         return clip;
     }
-
-
-
-
 
 }

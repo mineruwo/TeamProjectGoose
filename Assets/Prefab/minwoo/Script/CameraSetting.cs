@@ -24,7 +24,7 @@ public class CameraSetting : MonoBehaviour
 
     public void setTarget()
     {
-        var player = GameObject.FindGameObjectWithTag("Player");
+        var player = GameObject.FindGameObjectWithTag("Goose");
 
         vcam1.Follow = player.transform;
         vcam2.Follow = player.transform;

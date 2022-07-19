@@ -5,15 +5,17 @@ using UnityEngine;
 public abstract class PhysicObject : MonoBehaviour
 {
 
-    private bool isGrab;
+    public bool isGrab;
 
-    private bool isSound;
+    public bool isSound;
 
-    private bool isHeavy;
+    public bool isHeavy;
 
-    private bool isActive;
+    public bool isActive;
+
+    
     public abstract bool OnTrigger();
 
-    public abstract bool OnGrab();
+    public abstract bool OnGrab(bool isgrab);
 
 }
