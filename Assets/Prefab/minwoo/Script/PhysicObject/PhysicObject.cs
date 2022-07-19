@@ -13,7 +13,9 @@ public abstract class PhysicObject : MonoBehaviour
 
     public bool isActive;
 
-    
+    public Rigidbody Rigidbody;
+
+
     public abstract bool OnTrigger();
 
     public abstract bool OnGrab(bool isgrab);
