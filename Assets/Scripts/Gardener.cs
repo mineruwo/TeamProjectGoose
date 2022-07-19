@@ -29,13 +29,12 @@ public class Gardener : NPC
     public bool isTakenByGoose;
 
     private States state;
+    private int index = 0;
 
     private void Start()
     {
         rigBuilder = GetComponent<RigBuilder>();
         agent = GetComponent<NavMeshAgent>();
-
-        //workPos = gameObject.transform.position;
     }
     private void Update()
     {
@@ -48,6 +47,11 @@ public class Gardener : NPC
         //}
 
         TouchGoose();
+
+        if(index>=workPos.Length)
+        {
+            index = 0;
+        }
     }
     public override void Detect()
     {
@@ -61,13 +65,13 @@ public class Gardener : NPC
     {
         yield return new WaitForSeconds(5f);
         Move();
-        agent.SetDestination(workPos[0].position);
 
         //pathStatus랑 같을 때 검사 pathComplete
         if(agent.pathStatus == NavMeshPathStatus.PathComplete)
         {
             isArrived = true;
             Idle();
+            index = 0;
             Debug.Log("걷고있나요?");
         }
 
@@ -82,6 +86,7 @@ public class Gardener : NPC
     {
         animator.SetFloat("LocalVelocityZ", 0.5f);
         animator.SetFloat("RemainingDistance", 1f);
+        agent.SetDestination(workPos[index].localPosition);
     }
 
     public override void Chase()
