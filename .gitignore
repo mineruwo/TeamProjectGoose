@@ -61,7 +61,8 @@ sysinfo.txt
 
 # Builds
 *.apk
-
+*.prefab
+*.prefab.meta
 
 # Crashlytics generated file
 crashlytics-build.properties
