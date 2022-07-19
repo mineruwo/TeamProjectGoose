@@ -56,9 +56,9 @@ public class DataManager : MonoBehaviour
         Debug.Log($"[DataManager] 저장한 파일명 : {fileName}");
     }
 
-    public void DeleteQuestData()
+    public void DeleteQuestData(int slotNum)
     {
-        string fileName = "Quest" + currentSlot;
+        string fileName = "Quest" + slotNum;
         string path = Application.dataPath + "/" + "AATeamProject" + "/"  +
            "Json" + "/" + fileName + ".Json";
 
