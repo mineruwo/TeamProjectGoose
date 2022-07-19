@@ -10,6 +10,7 @@ public class QuestManager : MonoBehaviour
     {
         currentQuestId = id;
         Debug.Log($"[QuestManage] ¹Þ¾Æ¿Â id : {currentQuestId}");
+        CheckIsClear();
     }
 
     private void CheckIsClear()
