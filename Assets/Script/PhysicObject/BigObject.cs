@@ -7,6 +7,7 @@ public class BigObject : PhysicObject
     public Vector3 setPos;
     private Rigidbody Rigidbody;
     private List<Collider> colliders;
+    public List<GameObject> handlePoint;
 
     public void Awake()
     {
@@ -15,8 +16,8 @@ public class BigObject : PhysicObject
         var cols = GetComponents<Collider>();
         foreach (var col in cols)
         {
-            col.enabled = false;
             colliders.Add(col);
+            col.enabled = false;
         }
 
         isActive = false;

@@ -7,16 +7,17 @@ public class SmallObject : PhysicObject
     public Vector3 setPos;
     private Rigidbody Rigidbody;
     private List<Collider> colliders;
+    public GameObject handlePoint;
 
     public void Awake()
     {
         setPos = transform.position;
         Rigidbody = GetComponent<Rigidbody>();
-        var cols = GetComponents<Collider>();
+        var cols = GetComponentsInChildren<Collider>();
         foreach (var col in cols)
         {
-            col.enabled = false;
             colliders.Add(col);
+            col.enabled = false;
         }
 
         isActive = false;
